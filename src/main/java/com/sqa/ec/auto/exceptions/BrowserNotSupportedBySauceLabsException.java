@@ -8,7 +8,7 @@
  *   
  */
 
-package com.sqa.ec.helpers.exceptions;
+package com.sqa.ec.auto.exceptions;
 
 
 /**

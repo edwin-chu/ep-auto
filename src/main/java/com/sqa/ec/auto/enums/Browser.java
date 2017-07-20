@@ -1,4 +1,4 @@
-package com.sqa.ec.helpers.enums;
+package com.sqa.ec.auto.enums;
 
 public enum Browser
 {

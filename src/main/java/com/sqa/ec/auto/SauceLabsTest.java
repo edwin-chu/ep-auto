@@ -13,9 +13,9 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.remote.*;
 import org.testng.annotations.*;
 
+import com.sqa.ec.auto.enums.*;
+import com.sqa.ec.auto.exceptions.*;
 import com.sqa.ec.helpers.*;
-import com.sqa.ec.helpers.enums.*;
-import com.sqa.ec.helpers.exceptions.*;
 
 /**
  * SauceLabsTest //ADDD (description of class)
