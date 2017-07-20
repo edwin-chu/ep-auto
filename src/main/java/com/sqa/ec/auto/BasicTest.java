@@ -15,7 +15,7 @@ public class BasicTest extends Core
 		super(baseUrl);
 	}
 
-	@BeforeClass(enabled = true)
+	@BeforeClass(enabled = true, groups = "chrome")
 	public void setUpChrome()
 	{
 		// Set system property to use Chrome driver
@@ -32,7 +32,7 @@ public class BasicTest extends Core
 		getDriver().manage().window().maximize();
 	}
 
-	@BeforeClass(enabled = false)
+	@BeforeClass(enabled = true, groups = "firefox")
 	public void setUpFirefox()
 	{
 		// Setup the driver to use Firefox
@@ -47,7 +47,7 @@ public class BasicTest extends Core
 		getDriver().manage().window().maximize();
 	}
 
-	@BeforeClass(enabled = false)
+	@BeforeClass(enabled = true, groups = "safari")
 	public void setUpSafari()
 	{
 		// Setup the driver to use Safari
@@ -66,7 +66,7 @@ public class BasicTest extends Core
 	public void setupTest()
 	{
 		// goto base URL
-		getDriver().get(getBaseURL());
+		// getDriver().get(getBaseURL());
 	}
 
 	@AfterClass

@@ -5,7 +5,7 @@
  * Instructor: Jean-francois Nepton<br>
  * Created: Jul 1, 2017
  */
-package com.sqa.ec.helpers;
+package com.sqa.ec.auto;
 
 import org.testng.annotations.*;
 
@@ -40,7 +40,7 @@ public abstract class AbstractLoginTest extends BasicTest
 	@BeforeClass
 	public void setupLogin()
 	{
-		login(getProp("username"), getProp("password"));
+		login(getProp("ebayUsername"), getProp("ebayPassword"));
 	}
 
 	@AfterClass
