@@ -37,6 +37,58 @@ public abstract class AdactinTest extends AbstractLoginTest
 		super("http://adactin.com/HotelApp");
 	}
 
+	public void bookHotel()
+	{
+		WebElement book = getDriver().findElement(By.id("book_now"));
+		book.click();
+	}
+
+	public void enterCCInfo()
+	{
+		WebElement ccNum = getDriver().findElement(By.id("cc_num"));
+		ccNum.clear();
+		ccNum.sendKeys(getProp("ccnum"));
+		String creditCardType = getProp("cctype");
+		WebElement ccTypeDropdown = getDriver().findElement(By.id("cc_type"));
+		ccTypeDropdown.click();
+		boolean foundCardType = isValuePresent(creditCardType, ccTypeDropdown);
+		Select selectCCTypeDropdown = new Select(ccTypeDropdown);
+		if (foundCardType)
+		{
+			selectCCTypeDropdown.selectByVisibleText(creditCardType);
+		} else
+		{
+			getLog().error("Test Failed: Credit card type " + creditCardType + " not found in the list.");
+		}
+		String month = getProp("expmonth");
+		WebElement monthDropdown = getDriver().findElement(By.id("cc_exp_month"));
+		monthDropdown.click();
+		boolean foundMonth = isValuePresent(month, monthDropdown);
+		Select selectMonthDropdown = new Select(monthDropdown);
+		if (foundMonth)
+		{
+			selectMonthDropdown.selectByVisibleText(month);
+		} else
+		{
+			getLog().info("Test Failed: Selected month " + month + " not found in the list.");
+		}
+		String year = getProp("expyear");
+		WebElement yearDropdown = getDriver().findElement(By.id("cc_exp_year"));
+		yearDropdown.click();
+		boolean foundYear = isValuePresent(year, yearDropdown);
+		Select selectYearDropdown = new Select(yearDropdown);
+		if (foundYear)
+		{
+			selectYearDropdown.selectByVisibleText(year);
+		} else
+		{
+			getLog().info("Test Failed: Selected year " + year + " is not available in the list.");
+		}
+		WebElement cvvNum = getDriver().findElement(By.id("cc_cvv"));
+		cvvNum.clear();
+		cvvNum.sendKeys(getProp("cvvnum"));
+	}
+
 	public String enterCheckInDate(int checkInFromToday)
 	{
 		// parameter checkInFromToday represent # of dates from today's date
@@ -73,6 +125,32 @@ public abstract class AdactinTest extends AbstractLoginTest
 		checkOutDate.sendKeys(dateFormat.format(checkOut.getTime()));
 		// return date (to use in some test)
 		return dateFormat.format(checkOut.getTime());
+	}
+
+	public void enterNameAndAddress()
+	{
+		WebElement fName = getDriver().findElement(By.id("first_name"));
+		fName.clear();
+		fName.sendKeys(getProp("guestfname"));
+		WebElement lName = getDriver().findElement(By.id("last_name"));
+		lName.clear();
+		lName.sendKeys(getProp("guestlname"));
+		WebElement address = getDriver().findElement(By.id("address"));
+		address.clear();
+		address.sendKeys(getProp("billingaddress"));
+	}
+
+	public boolean isEditable(WebElement element)
+	{
+		try
+		{
+			element.clear();
+			return true;
+		} catch (InvalidElementStateException e)
+		{
+			System.out.println("Unable to clear text.");
+			return false;
+		}
 	}
 
 	public boolean isValuePresent(String value, WebElement element)
