@@ -29,6 +29,7 @@ public class AdactinTC101 extends AdactinTest
 	{
 		String expectPageTitle = "AdactIn.com - Search Hotel";
 		String actualPageTitle = getDriver().getTitle();
+		System.out.println(actualPageTitle);
 		takeScreenshot();
 		Assert.assertEquals(actualPageTitle, expectPageTitle);
 	}

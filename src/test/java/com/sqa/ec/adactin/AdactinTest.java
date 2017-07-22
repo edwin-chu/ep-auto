@@ -140,6 +140,12 @@ public abstract class AdactinTest extends AbstractLoginTest
 		address.sendKeys(getProp("billingaddress"));
 	}
 
+	public void goToBookedItin()
+	{
+		WebElement bookedItin = getDriver().findElement(By.cssSelector("a[href='BookedItinerary.php']"));
+		bookedItin.click();
+	}
+
 	public boolean isEditable(WebElement element)
 	{
 		try
@@ -205,11 +211,220 @@ public abstract class AdactinTest extends AbstractLoginTest
 		continueButton.click();
 	}
 
+	public String reBookingTotalPrice()
+	{
+		WebElement bTotalPrice = getDriver().findElement(By.id("total_price"));
+		String bTotal = bTotalPrice.getAttribute("value");
+		return bTotal;
+	}
+
+	public String retBookingAddress()
+	{
+		WebElement bAddress = getDriver().findElement(By.id("address"));
+		String bAdd = bAddress.getAttribute("value");
+		return bAdd;
+	}
+
+	public String retBookingAdult()
+	{
+		WebElement bNumAdult = getDriver().findElement(By.id("adults_room"));
+		String bAdult = bNumAdult.getAttribute("value");
+		return bAdult;
+	}
+
+	public String retBookingArrDate()
+	{
+		WebElement bArrival = getDriver().findElement(By.id("arrival_date"));
+		String bArr = bArrival.getAttribute("value");
+		return bArr;
+	}
+
+	public String retBookingChildren()
+	{
+		WebElement bNumChildren = getDriver().findElement(By.id("children_room"));
+		String bChildren = bNumChildren.getAttribute("value");
+		return bChildren;
+	}
+
+	public String retBookingDepDate()
+	{
+		WebElement bDeparture = getDriver().findElement(By.id("departure_text"));
+		String bDep = bDeparture.getAttribute("value");
+		return bDep;
+	}
+
+	public String retBookingFinalBill()
+	{
+		WebElement bFinalBill = getDriver().findElement(By.id("final_price"));
+		String bFinal = bFinalBill.getAttribute("value");
+		return bFinal;
+	}
+
+	public String retBookingFirstName()
+	{
+		WebElement bFirstName = getDriver().findElement(By.id("first_name"));
+		String bFName = bFirstName.getAttribute("value");
+		return bFName;
+	}
+
+	public String retBookingGST()
+	{
+		WebElement bGST = getDriver().findElement(By.id("gst"));
+		String bTax = bGST.getAttribute("value");
+		return bTax;
+	}
+
+	public String retBookingHotel()
+	{
+		WebElement bHotel = getDriver().findElement(By.id("hotel_name"));
+		String bookingHotel = bHotel.getAttribute("value");
+		return bookingHotel;
+	}
+
+	public String retBookingLastName()
+	{
+		WebElement bLastName = getDriver().findElement(By.id("last_name"));
+		String bLName = bLastName.getAttribute("value");
+		return bLName;
+	}
+
+	public String retBookingLocation()
+	{
+		WebElement bLocation = getDriver().findElement(By.id("location"));
+		String bLoc = bLocation.getAttribute("value");
+		return bLoc;
+	}
+
+	public String retBookingOrderNum()
+	{
+		WebElement orderNum = getDriver().findElement(By.id("order_no"));
+		String order = orderNum.getAttribute("value");
+		return order;
+	}
+
+	public String retBookingPricePerNight()
+	{
+		WebElement bPricePerNight = getDriver().findElement(By.id("price_night"));
+		String bPPN = bPricePerNight.getAttribute("value");
+		return bPPN;
+	}
+
+	public String retBookingRoomType()
+	{
+		WebElement bRoomType = getDriver().findElement(By.id("room_type"));
+		String bRType = bRoomType.getAttribute("value");
+		return bRType;
+	}
+
+	public String retBookingTotalRooms()
+	{
+		WebElement bTotalRooms = getDriver().findElement(By.id("total_rooms"));
+		String bRooms = bTotalRooms.getAttribute("value");
+		return bRooms;
+	}
+
+	public String retItinArrDate(String orderId)
+	{
+		WebElement itinArrDate = getDriver().findElement(By.id("arr_date_" + orderId));
+		String itinArr = itinArrDate.getAttribute("value");
+		System.out.println(itinArr);
+		return itinArr;
+	}
+
+	public String retItinDepDate(String orderId)
+	{
+		WebElement itinDepDate = getDriver().findElement(By.id("dep_date_" + orderId));
+		String itinDep = itinDepDate.getAttribute("value");
+		System.out.println(itinDep);
+		return itinDep;
+	}
+
+	public String retItinFinalBill(String orderId)
+	{
+		WebElement itinFinalBill = getDriver().findElement(By.id("total_price_" + orderId));
+		String itinFBill = itinFinalBill.getAttribute("value");
+		System.out.println(itinFBill);
+		return itinFBill;
+	}
+
+	public String retItinFirstName(String orderId)
+	{
+		WebElement itinFirstName = getDriver().findElement(By.id("first_name_" + orderId));
+		String itinFName = itinFirstName.getAttribute("value");
+		System.out.println(itinFName);
+		return itinFName;
+	}
+
+	public String retItinHotelName(String orderId)
+	{
+		WebElement itinHotelName = getDriver().findElement(By.id("hotel_name_" + orderId));
+		String itinHotel = itinHotelName.getAttribute("value");
+		System.out.println(itinHotel);
+		return itinHotel;
+	}
+
+	public String retItinLastName(String orderId)
+	{
+		WebElement itinLastName = getDriver().findElement(By.id("last_name_" + orderId));
+		String itinLName = itinLastName.getAttribute("value");
+		System.out.println(itinLName);
+		return itinLName;
+	}
+
+	public String retItinLocation(String orderId)
+	{
+		WebElement itinLocation = getDriver().findElement(By.id("location_" + orderId));
+		String itinLoc = itinLocation.getAttribute("value");
+		System.out.println(itinLoc);
+		return itinLoc;
+	}
+
+	public String retItinNumRooms(String orderId)
+	{
+		WebElement itinNumRooms = getDriver().findElement(By.id("rooms_" + orderId));
+		String itinRooms = itinNumRooms.getAttribute("value");
+		System.out.println(itinRooms);
+		return itinRooms;
+	}
+
+	public String retItinOrderInfo(String orderNum)
+	{
+		// get order code
+		WebElement orderInfo = getDriver().findElement(By.cssSelector("input[value='" + orderNum + "']"));
+		String orderId = orderInfo.getAttribute("name");
+		return orderId;
+	}
+
+	public String retItinPPN(String orderId)
+	{
+		WebElement itinPPN = getDriver().findElement(By.id("price_night_" + orderId));
+		String itinPrice = itinPPN.getAttribute("value");
+		System.out.println(itinPrice);
+		return itinPrice;
+	}
+
+	public String retItinRoomType(String orderId)
+	{
+		WebElement itinRoomType = getDriver().findElement(By.id("room_type_" + orderId));
+		String itinRType = itinRoomType.getAttribute("value");
+		System.out.println(itinRType);
+		return itinRType;
+	}
+
 	public void search()
 	{
 		// click search button to search
 		WebElement searchButton = getDriver().findElement(By.id("Submit"));
 		searchButton.click();
+	}
+
+	public void searchOrderId(String order)
+	{
+		WebElement searchField = getDriver().findElement(By.id("order_id_text"));
+		searchField.clear();
+		searchField.sendKeys(order);
+		WebElement goButton = getDriver().findElement(By.id("search_hotel_id"));
+		goButton.click();
 	}
 
 	public void selectHotel(String hotel)
@@ -244,6 +459,12 @@ public abstract class AdactinTest extends AbstractLoginTest
 		{
 			getLog().error("Test Failed: Location " + loc + " not found in the list.");
 		}
+	}
+
+	public void selectMyItinerary()
+	{
+		WebElement myItin = getDriver().findElement(By.id("my_itinerary"));
+		myItin.click();
 	}
 
 	public void selectNumAdult(String numAdult)
