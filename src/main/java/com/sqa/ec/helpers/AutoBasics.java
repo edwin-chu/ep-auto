@@ -29,6 +29,35 @@ import org.testng.log4testng.*;
 public class AutoBasics
 {
 
+	public static List<WebElement> getByTagName(WebDriver driver, String tagName)
+	{
+		return driver.findElements(By.tagName(tagName));
+	}
+
+	public static List<WebElement> getCSSPropBasedElements(WebDriver driver, By locator, String prop, String value)
+	{
+		List<WebElement> elements = driver.findElements(locator);
+		ArrayList<WebElement> filteredElements = new ArrayList<WebElement>();
+		for (int i = 0; i < elements.size(); i++)
+		{
+			if (elements.get(i).getCssValue(prop).equalsIgnoreCase("value"))
+			{
+				filteredElements.add(elements.get(i));
+			}
+		}
+		return filteredElements;
+	}
+
+	public static List<WebElement> getLinks(WebDriver driver)
+	{
+		return driver.findElements(By.tagName("a"));
+	}
+
+	public static List<WebElement> getPictures(WebDriver driver)
+	{
+		return driver.findElements(By.tagName("img"));
+	}
+
 	public static String getProp(String propName, String fileLocation, String fileName, Logger logger)
 	{
 		Properties props = new Properties();
@@ -45,6 +74,19 @@ public class AutoBasics
 			logger.warn("Can not load config properties file can not be read: " + fileName);
 		}
 		return props.getProperty(propName);
+	}
+
+	public static List<String> getTextContents(WebDriver driver, By locator)
+	{
+		// *.getText()
+		List<String> textElement = new ArrayList<String>();
+		List<WebElement> elements = driver.findElements(locator);
+		for (WebElement we : elements)
+		{
+			textElement.add(we.getText());
+			System.out.println(we.getText());
+		}
+		return textElement;
 	}
 
 	public static boolean isElementPresent(WebDriver driver, By by, Logger logger)
