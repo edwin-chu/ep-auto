@@ -1,13 +1,11 @@
-# Basic Project
-## Basic Project Structure
+# EsportsPlus-Automation Project
 
-*Default Structure for A Basic Project*
+*Automation Testing with Selenium WebDriver Java*
 
 
 **Java 8**
-
 *Maven
-*JUnit
+*TestNG
 
-Java Project for SQA Boot Camp Program.
+
 
